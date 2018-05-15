@@ -10,7 +10,7 @@ let store = createStore(
     currentText: 'Hello World',
     currentArticle: 'Hack Reactor',
     links: [],
-    clickCounter = 0
+    clickCounter: 0
   }, 
   composeEnhancers(
     applyMiddleware(thunk)

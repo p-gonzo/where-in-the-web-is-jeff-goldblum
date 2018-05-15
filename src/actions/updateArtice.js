@@ -7,14 +7,16 @@ var handleArticleChange = (query) => {
 
   //TODO: Learn what this code is doing
   return function thunk (dispatch) {
-    searchYouTube((query) => {
-      //define links list
-        //.then ???
-      var articles = asdfads;
-      var article = query;
-      dispatch(changeArticleList(articles));
-      dispatch(changeVideo(article));
-    });
+    queryWikipedia(query).then(((data) => {
+      console.log(data)
+      var newPage = data.query.normalized[0].to;
+      var pageKey = Object.keys(data.query.pages)[0];
+      var newLinks = data.query.pages[pageKey].links;
+      console.log(newPage);
+      console.log(newLinks);
+      //dispatch(changeArticleList(articles));
+      //dispatch(changeVideo(article));
+    })); 
   };
 };
 

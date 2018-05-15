@@ -2,6 +2,7 @@ import React from 'react';
 import store from '../store/store.js';
 import { connect } from 'react-redux';
 import changeText from '../actions/currentText';
+import handleArticleChange from '../actions/updateArtice.js';
 
 
 class App extends React.Component {
@@ -11,7 +12,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(()=> this.props.changeText("Goodbye!") , 2000);
+    setTimeout(()=> {
+      this.props.changeText("Goodbye!");
+      this.props.handleArticleChange("Hack_Reactor");
+    } , 2000);
   }
 
   render() {
@@ -33,7 +37,8 @@ var mapStateToProps = (state) => {
 
 var mapDispatchToProps = (dispatch) => {
   return {
-    changeText: (text) => dispatch(changeText(text))
+    changeText: (text) => dispatch(changeText(text)),
+    handleArticleChange: (article) => dispatch(handleArticleChange(article))
   }
 }
 
