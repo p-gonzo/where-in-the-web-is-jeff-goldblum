@@ -2,13 +2,12 @@ import React from 'react';
 import store from '../store/store.js';
 import { connect } from 'react-redux';
 import changeText from '../actions/currentText';
-import handleArticleChange from '../actions/updateArtice.js';
+import handleArticleChange from '../actions/updateArticle.js';
 
 
 class App extends React.Component {
   constructor(props){
     super(props);
-    console.log(props);
   }
 
   componentDidMount() {

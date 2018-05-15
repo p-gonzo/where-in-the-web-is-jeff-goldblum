@@ -9,7 +9,7 @@ let store = createStore(
   {
     currentText: 'Hello World',
     currentArticle: 'Hack Reactor',
-    links: [],
+    articleList: [],
     clickCounter: 0
   }, 
   composeEnhancers(

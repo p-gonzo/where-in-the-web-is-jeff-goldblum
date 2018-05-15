@@ -12,10 +12,12 @@ var handleArticleChange = (query) => {
       var newPage = data.query.normalized[0].to;
       var pageKey = Object.keys(data.query.pages)[0];
       var newLinks = data.query.pages[pageKey].links;
+      newLinks = newLinks.map ((item) => item.title);
       console.log(newPage);
       console.log(newLinks);
-      //dispatch(changeArticleList(articles));
-      //dispatch(changeVideo(article));
+      
+      dispatch(changeArticleList(newLinks));
+      dispatch(changeArticle(query));
     })); 
   };
 };
