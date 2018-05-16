@@ -2,7 +2,8 @@ import React from 'react';
 import store from '../store/store.js';
 import { connect } from 'react-redux';
 import changeText from '../actions/currentText';
-import handleArticleChange from '../actions/updateArtice.js';
+import handleArticleChange from '../actions/updateArticle.js';
+import updateCount from '../actions/updateCount.js'
 
 
 class App extends React.Component {
@@ -13,9 +14,9 @@ class App extends React.Component {
 
   componentDidMount() {
     setTimeout(()=> {
-      this.props.changeText("Goodbye!");
-      this.props.handleArticleChange("Hack_Reactor");
-    } , 2000);
+      this.props.changeText("Where in the web is Jeff Goldblum?");
+      this.props.handleArticleChange("Independance_Day");
+    } , 1000);
   }
 
   render() {
@@ -24,6 +25,15 @@ class App extends React.Component {
         <h1 onClick ={ (e) => this.props.changeText("Clicked!") }>
           {this.props.text}
         </h1>
+        <p>{this.props.currentClickCount}</p>
+        <ul>
+          {this.props.articleList.map((article) => {
+            return (<li onClick = {() => {
+              this.props.handleArticleChange(article);
+              this.props.updateCount(this.props.currentClickCount);
+            }}>{article}</li>)
+              })}
+        </ul>
       </div>
     );
   }
@@ -31,14 +41,17 @@ class App extends React.Component {
 
 var mapStateToProps = (state) => {
   return {
-    text: state.currentText
+    text: state.currentText,
+    articleList: state.articleList,
+    currentClickCount: state.clickCounter
   }
 }
 
 var mapDispatchToProps = (dispatch) => {
   return {
     changeText: (text) => dispatch(changeText(text)),
-    handleArticleChange: (article) => dispatch(handleArticleChange(article))
+    handleArticleChange: (article) => dispatch(handleArticleChange(article)),
+    updateCount: (clickCount) => dispatch(updateCount(clickCount))  
   }
 }
 
