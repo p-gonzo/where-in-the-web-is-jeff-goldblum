@@ -25,7 +25,7 @@ class App extends React.Component {
         <h1 onClick ={ (e) => this.props.changeText("Clicked!") }>
           {this.props.text}
         </h1>
-        <p>{this.props.currentClickCount}</p>
+        <p className='click-counter'>{this.props.currentClickCount}</p>
         <ul>
           {this.props.articleList.map((article) => {
             return (<li onClick = {() => {
