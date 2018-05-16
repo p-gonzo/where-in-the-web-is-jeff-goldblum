@@ -7,7 +7,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 let store = createStore(
   rootReducer, 
   {
-    currentText: 'Hello World',
+    currentText: 'Intializing...',
     currentArticle: 'Hack Reactor',
     articleList: [],
     clickCounter: 0
