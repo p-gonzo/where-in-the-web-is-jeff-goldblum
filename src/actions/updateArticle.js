@@ -7,7 +7,6 @@ var handleArticleChange = (query) => {
   //TODO: Learn what this code is doing
   return function thunk (dispatch) {
     queryWikipedia(query).then((data) => {
-      // var newPage = data.query.normalized[0].to;
 
       var pageKey = Object.keys(data.query.pages)[0];
       var newLinks = data.query.pages[pageKey].links;
